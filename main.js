@@ -1,6 +1,6 @@
-var boxsize = 15;
+ï»¿var boxsize = 15;
 window.onload = function() {
-	//³õÊ¼»¯ÆåÅÌ
+	//åˆå§‹åŒ–æ£‹ç›˜
 	var box = document.getElementById('box');
 	for (var i = 0; i < boxsize; ++i) {
 		var row = document.createElement('tr');
@@ -21,36 +21,36 @@ function handleCellClick(cell){
     var y = parseInt(idValue.split("-")[0]);
 	
 	if (!cell.hasChildNodes()){
-		// Âä×ÓĞĞÎª
+		// è½å­è¡Œä¸º
 		var previousChessColor;
 		var div = document.createElement('div');
-		if(role.innerHTML == "ºÚÆå"){
+		if(role.innerHTML == "é»‘æ£‹"){
 			div.setAttribute('class', 'black');
-			previousChessColor = 'ºÚÆå';
-			role.innerHTML = '°×Æå';
+			previousChessColor = 'é»‘æ£‹';
+			role.innerHTML = 'ç™½æ£‹';
 			//step.innerHTML = parseInt(step.innerHTML) + 1; 
 		}else{
 			div.setAttribute('class','white');
-			previousChessColor = '°×Æå';
-			role.innerHTML = 'ºÚÆå';
+			previousChessColor = 'ç™½æ£‹';
+			role.innerHTML = 'é»‘æ£‹';
 			//step.innerHTML = parseInt(step.innerHTML) + 1;
 		}
 		cell.appendChild(div);
 		step.innerHTML = ++currentStep;
 		
-		//ÅĞ¶ÏÓ®
+		//åˆ¤æ–­èµ¢
 		var steps = [[1, 0], [0, 1], [1, 1], [1, -1]];
 		for(var i = 0; i < 4; i++) {
 			if(judgeChessWin(x, steps[i][0], y, steps[i][1])){
-				alert(previousChessColor + "Ó®ÁË");
-				//½ûÓÃÆåÅÌ
+				alert(previousChessColor + "èµ¢äº†");
+				//ç¦ç”¨æ£‹ç›˜
 			}
 		}
 		
 	}
 }
 
-//ÄÃµ½µ¥Ôª¸ñÑÕÉ«
+//æ‹¿åˆ°å•å…ƒæ ¼é¢œè‰²
 function getCellColor(x, y) {
 	if(outOfRange(x, y)) {
 		return '';
@@ -58,11 +58,11 @@ function getCellColor(x, y) {
 	var cell = document.getElementById(y+"-"+x).firstChild;
 	return cell ? cell.className : '';
 }
-//ÅĞ¶ÏÊÇ·ñÔ½½ç
+//åˆ¤æ–­æ˜¯å¦è¶Šç•Œ
 function outOfRange(x, y) {
 	return x < 0 || x >= boxsize || y < 0 || y >= boxsize;
 }
-//¼ÆËãÂä×ÓÄ³¸ö·½ÏòÉÏµÄÆå×ÓÊıÁ¿
+//è®¡ç®—è½å­æŸä¸ªæ–¹å‘ä¸Šçš„æ£‹å­æ•°é‡
 function caculateChess(chessColor, x, xstep, y, ystep){
 	var nextX = x + xstep;
 	var nextY = y + ystep;
@@ -76,7 +76,7 @@ function caculateChess(chessColor, x, xstep, y, ystep){
 	}
 	return count;
 }
-//ÅĞ¶ÏcellÖĞÄ³¸öÂä×ÓÑÕÉ«ÔÚÄ³¸ö·½ÏòÉÏµÄÊıÁ¿		
+//åˆ¤æ–­cellä¸­æŸä¸ªè½å­é¢œè‰²åœ¨æŸä¸ªæ–¹å‘ä¸Šçš„æ•°é‡		
 function judgeChessWin(x, xstep, y, ystep){
 	var chessColor = getCellColor(x, y);
 	var count = 0;
